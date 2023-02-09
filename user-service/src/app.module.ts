@@ -1,0 +1,21 @@
+import { Module, forwardRef } from '@nestjs/common';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
+@Module({
+  imports: [ConfigModule.forRoot({
+    isGlobal: true
+  }),
+  MongooseModule.forRootAsync({
+    imports: [ConfigModule],
+    useFactory: async (configService: ConfigService) => ({
+      uri: configService.get<string>('MONGODB_LOCAL_URI') //'mongodb://localhost:27017'//'mongodb+srv://New_user:fNBU1DcDzXsycT5L@cluster0.0cpdt.mongodb.net/?retryWrites=true&w=majority'//configService.get<string>('MONGODB_URI')
+    }),
+    inject: [ConfigService]
+  }),
+    AuthModule, UserModule],
+
+})
+export class AppModule { }

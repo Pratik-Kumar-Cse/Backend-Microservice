@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package user;
+
+message CreateUserDto {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginUserDto {
+  string username = 1;
+  string password = 2;
+}
+
+message User {
+  string id = 1;
+  string username = 2;
+  string password = 3;
+}
+
+
+message LoginResponse {
+  string accessToken = 1;
+  User user = 2;
+  bool status = 3;
+}
+
+
+message SignupResponse {
+  User user = 1;
+}
+
+message GetProfileResponse{
+  User user = 1;
+}
+
+message GetProfile {
+  string username = 1;
+}
+
+
+service UserService {
+  rpc signup(CreateUserDto) returns (SignupResponse) {}
+  rpc login(LoginUserDto) returns (LoginResponse) {}
+  rpc getProfile(GetProfile) returns (GetProfileResponse) {}
+}

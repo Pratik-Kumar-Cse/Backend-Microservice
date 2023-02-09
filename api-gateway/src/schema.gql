@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateUserInput {
+  password: String!
+  username: String!
+}
+
+type LoginMessageDef {
+  accessToken: String!
+  status: Boolean!
+  user: User!
+}
+
+type Mutation {
+  login(createUserInput: CreateUserInput!): LoginMessageDef!
+  signup(createUserInput: CreateUserInput!): SignUpMessageDef!
+}
+
+type ProfileMessageDef {
+  user: User!
+}
+
+type Query {
+  findOne: SignUpMessageDef!
+  getProfile(input: String!): ProfileMessageDef!
+}
+
+type SignUpMessageDef {
+  status: Boolean!
+  user: User!
+}
+
+type User {
+  id: String!
+  password: String!
+  username: String!
+}

@@ -1,15 +1,21 @@
-import { Controller, UseGuards } from '@nestjs/common';
+import { Controller, Param, UseGuards } from '@nestjs/common';
 import { GrpcMethod, MessagePattern, Payload } from '@nestjs/microservices';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { Context } from '@nestjs/graphql';
+import { Args, Context } from '@nestjs/graphql';
 import { LoginUserDto } from 'src/auth/dto/login-user.dto';
 import { AuthService } from 'src/auth/auth.service';
 
+
+interface IUserName {
+  username: string;
+}
+
 @Controller()
 export class UserController {
+
 
   constructor(
     private readonly userService: UserService,
@@ -21,11 +27,6 @@ export class UserController {
   }
 
 
-  // @GrpcMethod('UserService', 'signup')
-  // signup(loginUserDto: LoginUserDto) {
-  //   console.log(loginUserDto);
-  //   return this.authService.signup(loginUserDto);
-  // }
 
   @GrpcMethod('UserService', 'findAll')
   @UseGuards(JwtAuthGuard)
@@ -33,10 +34,15 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  // @GrpcMethod('UserService', 'findOne')
-  // findOne() {
-  //   return this.userService.findOne();
-  // }
+  
+
+  @GrpcMethod('UserService', 'getProfile')
+  async getProfile(username: IUserName) {
+    console.log(username);
+    const user = await this.userService.findOne(username.username);
+    console.log(user);
+    return user;
+  }
 
 
 }

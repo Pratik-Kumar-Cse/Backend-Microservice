@@ -28,11 +28,5 @@ export class AuthController {
         return this.authService.signup(loginUserDto);
     }
 
-    @GrpcMethod('UserService', 'getProfile')
-    @UseGuards(JwtAuthGuard)
-    getProfile(@Request() req) {
-        console.log("hello");
-        console.log(req.user)
-        return req.user;
-    }
+    
 }

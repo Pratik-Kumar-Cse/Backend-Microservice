@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
 import { UserModule } from 'src/user/user.module';
-//import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { UserSchema } from 'src/user/schema/user.schema';
 import { MongooseModule } from '@nestjs/mongoose';

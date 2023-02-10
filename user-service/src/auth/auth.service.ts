@@ -34,6 +34,7 @@ export class AuthService {
         try {
             const userReturn = await this.userService.findOne(user.username);
             const data = {
+                sub: userReturn.id,
                 username: user.username
             };
             const access_token = this.jwtService.sign(data, { secret: process.env.JWT_SECRET });

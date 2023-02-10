@@ -33,7 +33,8 @@ export class UsersService {
   }
 
   async getProfile(username: string) {
-    return this.userMicroService.getProfile(username);
+    const user = await this.userMicroService.getProfile(username);
+    return user;
   }
 
 }

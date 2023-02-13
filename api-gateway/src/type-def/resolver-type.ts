@@ -57,6 +57,12 @@ export class SignUpMessageDef {
     readonly user: User;
 }
 
+@ObjectType()
+export class WalletCreateMessageDef {
+    @Field()
+    readonly publicKey: string;
+}
+
 
 @ObjectType()
 export class ProfileMessageDef {

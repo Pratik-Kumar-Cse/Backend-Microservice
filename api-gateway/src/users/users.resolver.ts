@@ -1,6 +1,6 @@
 import { Args, Context, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { User } from "./entities/user.entity";
-import { LoginMessageDef, ProfileMessageDef, SignUpMessageDef } from "./type-def/resolver-type";
+import { LoginMessageDef, ProfileMessageDef, SignUpMessageDef } from "../type-def/resolver-type";
 import { CreateUserInput } from "./dto/create-user.input";
 import { UsersService } from "./users.service";
 import { UseGuards,Request } from "@nestjs/common";

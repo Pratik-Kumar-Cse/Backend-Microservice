@@ -7,6 +7,11 @@ input CreateUserInput {
   username: String!
 }
 
+input CreateWalletInput {
+  seeds: String!
+  username: String!
+}
+
 type LoginMessageDef {
   accessToken: String!
   status: Boolean!
@@ -14,6 +19,7 @@ type LoginMessageDef {
 }
 
 type Mutation {
+  createWallet(createWalletInput: CreateWalletInput!): WalletCreateMessageDef!
   login(createUserInput: CreateUserInput!): LoginMessageDef!
   signup(createUserInput: CreateUserInput!): SignUpMessageDef!
 }
@@ -36,4 +42,8 @@ type User {
   id: String!
   password: String!
   username: String!
+}
+
+type WalletCreateMessageDef {
+  publicKey: String!
 }

@@ -7,6 +7,6 @@ export const UserServiceClientOptions: ClientOptions = {
     options: {
         url: "localhost:8081",
         package: 'user',
-        protoPath: join(__dirname, './user.proto'),
+        protoPath: join(__dirname, '../proto/user.proto'),
     }
 };

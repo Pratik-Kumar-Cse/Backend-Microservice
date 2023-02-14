@@ -6,7 +6,4 @@ export class CreateWalletDto {
     @Field()
     username: string;
 
-    @Field()
-    seeds: string;
-
 }

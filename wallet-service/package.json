@@ -32,6 +32,7 @@
     "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
     "apollo-server-express": "^3.11.1",
+    "bcrypt": "^5.1.0",
     "ethereumjs-wallet": "^1.0.2",
     "ethers": "^6.0.3",
     "graphql": "^16.6.0",

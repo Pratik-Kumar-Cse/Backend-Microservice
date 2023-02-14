@@ -5,8 +5,6 @@ export type WalletDocument = HydratedDocument<Wallet>;
 
 @Schema()
 export class Wallet {
-    @Prop()
-    userId: string;
 
     @Prop()
     username: string;

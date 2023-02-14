@@ -8,10 +8,16 @@ import { UpdateWalletDto } from './dto/update-wallet.dto';
 export class WalletController {
   constructor(private readonly walletService: WalletService) { }
 
-  @GrpcMethod('UserService', 'createWallet')
+  @GrpcMethod('WalletService', 'createWallet')
   createWallet(createWalletDto: CreateWalletDto) {
-    console.log('hello world')
     return this.walletService.createWallet(createWalletDto);
   }
+
+  @GrpcMethod('WalletService', 'getWallet')
+  async getWallet(createWalletDto: CreateWalletDto) {
+    const wallet = await this.walletService.getWallet(createWalletDto);
+    return wallet;
+  }
+
 
 }

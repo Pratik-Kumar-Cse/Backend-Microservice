@@ -8,7 +8,6 @@ input CreateUserInput {
 }
 
 input CreateWalletInput {
-  seeds: String!
   username: String!
 }
 
@@ -31,6 +30,7 @@ type ProfileMessageDef {
 type Query {
   findOne: SignUpMessageDef!
   getProfile(input: String!): ProfileMessageDef!
+  getWallet(createWalletInput: CreateWalletInput!): WalletMessageDef!
 }
 
 type SignUpMessageDef {
@@ -44,6 +44,17 @@ type User {
   username: String!
 }
 
-type WalletCreateMessageDef {
+type Wallet {
+  privateKey: String!
   publicKey: String!
+  username: String!
+}
+
+type WalletCreateMessageDef {
+  seeds: String!
+  wallet: Wallet!
+}
+
+type WalletMessageDef {
+  wallet: Wallet!
 }

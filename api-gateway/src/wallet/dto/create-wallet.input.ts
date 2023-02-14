@@ -8,8 +8,4 @@ export class CreateWalletInput {
   @IsString()
   username: string;
 
-  @Field()
-  @IsNotEmpty()
-  @IsString()
-  seeds: string;
 }

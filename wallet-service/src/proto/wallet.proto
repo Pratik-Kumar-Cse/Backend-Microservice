@@ -4,21 +4,25 @@ package wallet;
 
 message CreateWalletDto {
   string username = 1;
-  string seeds = 2;
 }
 
 message Wallet {
-  string userId = 1;
-  string username = 2;
-  string publicKey = 3;
-  string privateKey = 4;
+  string username = 1;
+  string publicKey = 2;
+  string privateKey = 3;
 }
 
 message CreateWalletResponse {
-  string publicKey = 1;
+  Wallet wallet = 1;
+  string seeds = 2;
+}
+
+message WalletResponse {
+  Wallet wallet = 1;
 }
 
 
 service WalletService {
   rpc createWallet(CreateWalletDto) returns (CreateWalletResponse) {}
+  rpc getWallet(CreateWalletDto) returns (WalletResponse) {}
 }

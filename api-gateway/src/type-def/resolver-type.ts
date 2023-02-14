@@ -32,7 +32,26 @@ class User {
 }
 
 
+@ObjectType()
+class Wallet {
+    @Field()
+    @IsString()
+    @IsNotEmpty()
+    @MinLength(3)
+    @Matches(/^[a-z0-9_-]+$/, {
+        message:
+            'Invalid username, must have both number and letters, be atleast 3 characters long and contain either _ or - '
+    })
+    readonly username: string;
 
+
+    @Field()
+    readonly publicKey: string;
+
+    @Field()
+    readonly privateKey: string;
+    
+}
 
 
 @ObjectType()
@@ -60,7 +79,17 @@ export class SignUpMessageDef {
 @ObjectType()
 export class WalletCreateMessageDef {
     @Field()
-    readonly publicKey: string;
+    readonly wallet: Wallet;
+
+    @Field()
+    readonly seeds: string;
+}
+
+
+@ObjectType()
+export class WalletMessageDef {
+    @Field()
+    readonly wallet: Wallet;
 }
 
 

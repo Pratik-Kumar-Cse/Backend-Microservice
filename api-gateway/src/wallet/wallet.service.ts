@@ -4,9 +4,12 @@ import { UpdateWalletInput } from './dto/update-wallet.input';
 import { WalletServiceInterface } from 'src/interfaces/wallet.interface';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { WalletServiceClientOptions } from './wallet.option';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class WalletService {
+
+  constructor(private readonly userService: UsersService){}
 
   @Client(WalletServiceClientOptions)
   private readonly walletServiceClient: ClientGrpc;
@@ -21,8 +24,14 @@ export class WalletService {
   }
 
   async createWallet(createWalletInput: CreateWalletInput) {
-    console.log(createWalletInput);
-    return await this.walletMicroService.createWallet(createWalletInput)
+    const wallet = await this.walletMicroService.createWallet(createWalletInput);
+    return wallet;
+  }
+
+  async getWallet(createWalletInput: CreateWalletInput) {
+    const wallet = await this.walletMicroService.getWallet(createWalletInput);
+    console.log(wallet);
+    return this.walletMicroService.getWallet(createWalletInput);
   }
 
 

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package game;
+
+message Game {
+    string id = 1;
+    string name = 2;
+    int32 amount = 3;
+    int32 price = 4;
+}
+
+message CreateGameDto {
+  string name = 1;
+  int32 amount = 2;
+  int32 price = 3;
+
+}
+
+message CreateGameResponse {
+  Game game = 1;
+  bool status = 2;
+  string message = 3;
+}
+
+
+service GameService {
+  rpc createGame(CreateGameDto) returns (CreateGameResponse) {}
+}

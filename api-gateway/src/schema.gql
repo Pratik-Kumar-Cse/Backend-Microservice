@@ -2,6 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateGameInput {
+  amount: Float!
+  name: String!
+  price: Float!
+}
+
+type CreateGameMessageDef {
+  game: Game!
+  message: String!
+  success: Boolean!
+}
+
 input CreateUserInput {
   password: String!
   username: String!
@@ -11,6 +23,13 @@ input CreateWalletInput {
   username: String!
 }
 
+type Game {
+  amount: String!
+  id: String!
+  name: String!
+  price: String!
+}
+
 type LoginMessageDef {
   accessToken: String!
   status: Boolean!
@@ -18,6 +37,7 @@ type LoginMessageDef {
 }
 
 type Mutation {
+  createGame(createGameInput: CreateGameInput!): CreateGameMessageDef!
   createWallet(createWalletInput: CreateWalletInput!): WalletCreateMessageDef!
   login(createUserInput: CreateUserInput!): LoginMessageDef!
   signup(createUserInput: CreateUserInput!): SignUpMessageDef!

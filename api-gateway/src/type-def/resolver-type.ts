@@ -50,7 +50,23 @@ class Wallet {
 
     @Field()
     readonly privateKey: string;
-    
+
+}
+
+
+@ObjectType()
+export class Game {
+    @Field()
+    readonly id: string;
+
+    @Field()
+    readonly name: string;
+
+    @Field()
+    readonly amount: string;
+
+    @Field()
+    readonly price: string;
 }
 
 
@@ -97,6 +113,20 @@ export class WalletMessageDef {
 export class ProfileMessageDef {
     @Field()
     readonly user: User;
+}
+
+@ObjectType()
+export class CreateGameMessageDef {
+
+    @Field()
+    readonly game: Game;
+
+    @Field()
+    readonly success: boolean;
+
+    @Field()
+    readonly message: string;
+
 }
 
 

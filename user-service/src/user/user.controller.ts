@@ -34,7 +34,7 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  
+
 
   @GrpcMethod('UserService', 'getProfile')
   async getProfile(username: IUserName) {

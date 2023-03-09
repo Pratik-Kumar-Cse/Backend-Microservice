@@ -29,6 +29,8 @@ export class GameService {
         price: createGameDto.price,
       }
 
+      console.log(game)
+
       const gameModel = new this.GameModel(game);
       await gameModel.save();
 

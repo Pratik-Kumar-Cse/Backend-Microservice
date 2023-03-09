@@ -3,7 +3,7 @@ import { User } from "./entities/user.entity";
 import { LoginMessageDef, ProfileMessageDef, SignUpMessageDef } from "../type-def/resolver-type";
 import { CreateUserInput } from "./dto/create-user.input";
 import { UsersService } from "./users.service";
-import { UseGuards,Request } from "@nestjs/common";
+import { UseGuards, Request } from "@nestjs/common";
 import { GetUserId, JwtAuthGuard } from "src/auth/jwt-auth.guard";
 
 @Resolver(() => User)
@@ -27,9 +27,9 @@ export class UsersResolver {
 
   @Query(() => ProfileMessageDef, { name: 'getProfile' })
   @UseGuards(JwtAuthGuard)
-  getProfile(@GetUserId() user, @Args('input') username: string)  {
-    if(user.username !== username) {
-      throw new Error('Invalid input');;
+  getProfile(@GetUserId() user, @Args('input') username: string) {
+    if (user.username !== username) {
+      throw new Error('Invalid input');
     }
     return this.usersService.getProfile(username);
   }

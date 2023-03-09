@@ -18,7 +18,7 @@ message CreateGameDto {
 
 message CreateGameResponse {
   Game game = 1;
-  bool status = 2;
+  bool success = 2;
   string message = 3;
 }
 
